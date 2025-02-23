@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>INST377 Lab 4</title>
+        <style>
+            body {
+                background-color: pink;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .sectionS {
+                background-color: blueviolet;
+                text-align: center;
+                border: 2px solid black;
+                width: 45%;
+                padding: 15px;
+                border-radius: 15px;
+                float: left;
+            }
+            .sectionC {
+                background-color: blueviolet;
+                text-align: center;
+                border-radius: 15px;
+                border: 2px solid black;
+                padding: 15px;
+                width: 45%;
+                float: right;
+            }
+            .sectionTT {
+                background-color: blueviolet;
+                text-align: center;
+                border-radius: 15px;
+                border: 2px solid black;
+                padding: 15px;
+                width: 45%;
+                float: left;
+                margin-top: 30px; 
+            }
+            .sectionAT {
+                background-color: blueviolet;
+                text-align: center;
+                border-radius: 15px;
+                border: 2px solid black;
+                padding: 15px;
+                width: 45%;
+                float: right;
+                margin-top: 30px;
+            }
+            
+        </style>
+    </head>
+
+        <body>
+            <h1>INST377 Lab 4</h1> 
+
+            <!-- Name section -->
+            <div class="sectionS">
+                <form id="name-box">
+                    <label for="name">Name: </label>
+                    <input type="text" id="name" name="name" required>
+                    <button type="button" onclick="alertName()">Alert Me!</button>
+                </form>
+            </div>
+            <!-- Color Section -->
+            <div class="sectionC">
+                <button onclick="changeColor()">Change Color</button>
+            </div>
+
+            <!-- Test Section -->
+            <div class="sectionTT">
+                <form id="textForm">
+                    <label for="text">Text Tester: </label>
+                    <input type="text" id="text" name="text">
+                    <button type="button" onclick="validateText()">Validate Text</button>
+                </form> 
+            </div>
+
+            <!-- Add Text Section -->
+            <div class="sectionAT">
+                <button onclick="addText()">Add Text</button>
+            </div>
+
+            <!-- Javascript Code -->
+            <script type="text/javascript">
+            document.body.style.backgroundColor = "pink";
+               
+                function alertName() {
+                    let name = document.getElementById("name").value;
+                    if (name) {
+                        alert("Hello, " + name + "!");  
+                    } else {
+                        alert("Please enter your name");
+                    } 
+                    console.log('Alert triggered with name:', name);
+                }
+
+                function changeColor() {
+                    const body = document.body;
+                    const currentColor = body.style.backgroundColor;
+                    console.log('Attempting to change background color: ', currentColor);
+                    if (currentColor === "pink") {
+                        body.style.backgroundColor = "yellow";
+                    } else {
+                        body.style.backgroundColor = "pink";
+                    }
+                    console.log('Background color changed to: ', body.style.backgroundColor);
+                }
+                
+
+                function validateText() {
+                   
+                    const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                    if (validation.test(document.getElementById("text").value)) {
+                        alert("Special characters are not allowed!");
+                        return false;
+                    
+                    }  
+                    return true;
+                }
+
+                function addText() {
+                    const heading = document.querySelector("h1");
+                    console.log('Current heading text:', heading.textContent);
+                    heading.textContent += " Add Text";
+                    console.log('Updated heading text:', heading.textContent);
+                }
+
+            </script>
+        </body>
+
+</html>
